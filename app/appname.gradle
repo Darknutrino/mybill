@@ -1,0 +1,8 @@
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        def fileName = "Biller" + "-" + variant.buildType.name + ".apk"
+        def formattedDate = new Date().format('[dd-MM-yyyy]')
+        fileName = fileName.replace("-debug", "" + formattedDate)
+        output.outputFile = new File(output.outputFile.parent, fileName)
+    }
+}
